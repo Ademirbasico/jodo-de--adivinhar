@@ -49,6 +49,41 @@
             font-size: 18px;
             font-weight: bold;
         }
+        img{
+            border-radius: 10px;
+            width: 200px;
+            
+        }
+        .acertou{
+            color: green;
+
+        }
+        .maior{
+            color: rgb(35, 157, 238);
+            
+        }
+        .menor{
+            color: rgb(230, 207, 3);
+            
+        }
+        .perdeu{
+            color: rgb(255, 0, 0);
+            
+        }
+        .imgs-corpo{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, 100px);
+            gap: 10px;
+            justify-content: center;
+
+
+        }
+        .imgs-corpo img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
 
 
 
@@ -56,6 +91,11 @@
     </style>
 </head>
 <body>
+    <div class="imgs-corpo">
+         <img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="gif gato">;
+          <img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="gif gato">; <img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="gif gato">;
+         <img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="gif gato">;
+    </div>
     <div class="container">
     <h1> jogo de adivinhação</h1>
     <p> estou pensando em um numero entre 1 e 100. Tente adivinhar!</p>
@@ -68,8 +108,7 @@
         <button onclick="recarregarPagina()">Jogar Novamente</button>
     </div>
 
-    <img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" style="width:200px;"
-    border-radius:10px>;
+    <img src="https://media1.tenor.com/m/5BYK-WS0__gAAAAd/cool-fun.gif" alt="gif gato">;
 
     </div>
 
@@ -83,6 +122,11 @@
             const mensagem = document.getElementById('mensagem');
             const tentativasSpan = document.getElementById('tentativas');
             const botaoRecarregar = document.getElementById('botaoRecarregar');
+
+        function LimparClassesMensagem(){
+            mensagem.classList.remove("acertou", "maior", "menor", "perdeu");
+        }
+    
 
             if(isNaN(palpite) || palpite <1 || palpite > 100){
                 mensagem.textContent = 'Por favor, insira um numero valido entre 1 e 100.';
@@ -99,16 +143,19 @@
 
                 }  else if(palpite < numeroAlvo){
                     mensagem.textContent = 'Tente um numero maior.';
-                    mensagem.style.color = 'red';
-            }
+                    LimparClassesMensagem();
+                    mensagem.classList.add('maior');
+                }
                 else if(palpite > numeroAlvo){
                     mensagem.textContent = 'tente numero menor. ';
-                    mensagem.style.color = 'blue';
+                    LimparClassesMensagem();
+                    mensagem.classList.add('menor');
 
                 }
                 if(tentativasRestantes === 0){
                     mensagem.textContent = `Acabaram suas tentativas. O numero correto era ${numeroAlvo}. `;
-                    mensagem.style.color = 'black';
+                    LimparClassesMensagem();
+                    mensagem.classList.add('perdeu');
                     desabilitarEntrada();
                     botaoRecarregar.style.display = 'block';
                 }
