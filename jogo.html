@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de adivinhação</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <h1> jogo de adivinhação</h1>
+    <p> estou pensando em um numero entre 1 e 100. Tente adivinhar!</p>
+    <input type="number" id="campoPalpite">
+    <button onclick="vefificarpalpite()"> Enviar Palpite</button> 
+    <p id="mensagem"> </p>
+    <p> Tentativas Restantes: <span id="tentativas"></span></p>
+
+    <div id="botaoRecarregar" style="display: none;">
+        <button onclick="recarregarPagina()">Jogar Novamente</button>
+    </div>
+
+    <script>
+        const numeroAlvo = Math.floor(Math.random() * 100) + 1;
+
+        let tentativasRestantes = 10;
+
+        function vefificarpalpite(){
+            const palpite = parseInt(document.getElementById('campoPalpite').value);
+            const mensagem = document.getElementById('mensagem');
+            const tentativasSpan = document.getElementById('tentativas');
+            const botaoRecarregar = document.getElementById('botaoRecarregar');
+
+            if(isNaN(palpite) || palpite <1 || palpite > 100){
+                mensagem.textContent = 'Por favor, insira um numero valido entre 1 e 100.';
+            }else{
+                tentativasRestantes--;
+                tentativasSpan.textContent = tentativasRestantes;
+
+                if(palpite === numeroAlvo){
+                    mensagem.textContent = `Parabens! Voce acertou o numero ${numeroAlvo}. `;
+                    botaoRecarregar.style.display = 'block';
+                    mensagem.style.color = 'green';
+                    desabilitarEntrada();
+                    
+
+                }  else if(palpite < numeroAlvo){
+                    mensagem.textContent = 'Tente um numero maior.';
+                    mensagem.style.color = 'red';
+            }
+                else if(palpite > numeroAlvo){
+                    mensagem.textContent = 'tente numero menor. ';
+                    mensagem.style.color = 'blue';
+
+                }
+                if(tentativasRestantes === 0){
+                    mensagem.textContent = `Acabaram suas tentativas. O numero correto era ${numeroAlvo}. `;
+                    mensagem.style.color = 'black';
+                    desabillitarEntrada();
+                    botaoRecarregar.style.display
+                }
+            }
+        }
+        function desabilitarEntrada(){
+            document.getElementById('campoPalpite').disabled = true;
+            document.getElementById('buttom').disabled = true;
+        }
+        function recarregarPagina(){
+            location.reload();
+        }
+     
+    </script>
+
+</body>
+</html>
