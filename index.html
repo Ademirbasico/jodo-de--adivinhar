@@ -13,7 +13,45 @@
         }
 
         body{
-            background-color: rgb(65, 88, 121);
+            background-color: #121212;
+            color: white;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+        }
+        button{
+            background: #00ff88;
+            border: none;
+            padding: 10px 20px;
+            border: 8px;
+            cursor: pointer;
+
+        }
+        button:hover{
+            background: #00cc6a;
+
+        }
+        input{
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 10px;
+
+        }
+        #resultado{
+            margin-top: 10 px;
+            font-size: 18px;
+            font-weight: bold;
         }
 
 
@@ -22,6 +60,7 @@
     </style>
 </head>
 <body>
+    <div class="container">
     <h1> jogo de adivinhação</h1>
     <p> estou pensando em um numero entre 1 e 100. Tente adivinhar!</p>
     <input type="number" id="campoPalpite">
@@ -86,6 +125,6 @@
         }
      
     </script>
-
+    </div>
 </body>
 </html>
