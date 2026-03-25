@@ -1,6 +1,6 @@
    const numeroAlvo = Math.floor(Math.random() * 100) + 1;
 
-        let tentativasRestantes = 10;
+        let tentativasRestantes = 5;
 
         function vefificarpalpite(){
             const palpite = parseInt(document.getElementById('campoPalpite').value);
