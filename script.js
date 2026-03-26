@@ -1,17 +1,20 @@
    const numeroAlvo = Math.floor(Math.random() * 100) + 1;
 
         let tentativasRestantes = 5;
-
-        function vefificarpalpite(){
+   const form = document.getElementById('formPalpite');
+        form.addEventListener("submit", function(event){
+            event.preventDefault();
+            vefificar();
+        function vefificar(){
             const palpite = parseInt(document.getElementById('campoPalpite').value);
             const mensagem = document.getElementById('mensagem');
             const tentativasSpan = document.getElementById('tentativas');
             const botaoRecarregar = document.getElementById('botaoRecarregar');
-
-        function LimparClassesMensagem(){
+        });
+        function LimparClassesMensagem(mensagem){
             mensagem.classList.remove("acertou", "maior", "menor", "perdeu");
         }
-    
+        LimparClassesMensagem(mensagem);    
 
             if(isNaN(palpite) || palpite <1 || palpite > 100){
                 mensagem.textContent = 'Por favor, insira um numero valido entre 1 e 100.';
