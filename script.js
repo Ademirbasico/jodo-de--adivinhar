@@ -11,11 +11,8 @@
             const mensagem = document.getElementById('mensagem');
             const tentativasSpan = document.getElementById('tentativas');
             const botaoRecarregar = document.getElementById('botaoRecarregar');
-        
-        function LimparClassesMensagem(mensagem){
-            mensagem.classList.remove("acertou", "maior", "menor", "perdeu");
-        }
-        LimparClassesMensagem(mensagem);    
+    
+            LimparClassesMensagem(mensagem);
 
             if(isNaN(palpite) || palpite <1 || palpite > 100){
                 mensagem.textContent = 'Por favor, insira um numero valido entre 1 e 100.';
