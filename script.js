@@ -1,11 +1,18 @@
-   const numeroAlvo = Math.floor(Math.random() * 100) + 1;
+    const numeroAlvo = Math.floor(Math.random() * 100) + 1;
 
         let tentativasRestantes = 5;
-   const form = document.getElementById('formPalpite');
+        const form = document.getElementById('formPalpite');
+        console.log(form);
         form.addEventListener("submit", function(event){
+            console.log("clicou");
             event.preventDefault();
             verificar();
         });
+
+        function LimparClassesMensagem(mensagem){
+            mensagem.classList.remove('maior', 'menor', 'perdeu');
+        }
+
         function verificar(){
             const palpite = parseInt(document.getElementById('palpite').value);
             const mensagem = document.getElementById('mensagem');
@@ -48,8 +55,14 @@
             }
         }
         function desabilitarEntrada(){
-            document.getElementById('campoPalpite').disabled = true;
-            document.getElementById('botaoEnviar').disabled = true;
+            const input = document.getElementById('palpite');
+            const botaoEnviar = document.querySelector('#formPalpite button');
+            if(input){
+                input.disabled = true;
+            }
+            if(botaoEnviar){
+                botaoEnviar.disabled = true;
+            }
         }
         function recarregarPagina(){
             location.reload();
